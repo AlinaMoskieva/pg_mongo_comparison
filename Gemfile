@@ -30,7 +30,6 @@ gem "slim"
 # all other gems
 gem "decent_decoration"
 gem "decent_exposure"
-gem "devise"
 gem "draper"
 gem "flamegraph"
 gem "google-analytics-rails"
