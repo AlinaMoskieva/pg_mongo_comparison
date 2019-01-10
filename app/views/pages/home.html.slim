@@ -2,3 +2,17 @@
   .columns
     h2
       = title("Home")
+.row
+  .columns
+  table
+    thead
+      tr
+        th width="200"  User ID
+        th State
+    tbody
+      - users.each do |user|
+        tr
+          td
+            = user.state
+          td
+            = user.users_amount
