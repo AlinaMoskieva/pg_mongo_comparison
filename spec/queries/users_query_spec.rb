@@ -4,8 +4,8 @@ describe UsersQuery do
   describe "#all" do
     subject(:result) { described_class.new.all }
 
-    let(:iowa_row) { result.last }
-    let(:georgia_row) { result.first }
+    let(:first_row) { result.first }
+    let(:last_row) { result.last }
 
     before do
       create_list :user, 2, state: "Iowa"
@@ -13,11 +13,11 @@ describe UsersQuery do
     end
 
     it "returns ordered collection of states with users amount" do
-      expect(result.last.state).to eq("Iowa")
-      expect(result.last.users_amount).to eq(2)
+      expect(first_row.state).to eq("Georgia")
+      expect(first_row.users_amount).to eq(1)
 
-      expect(result.first.state).to eq("Georgia")
-      expect(result.first.users_amount).to eq(1)
+      expect(last_row.state).to eq("Iowa")
+      expect(last_row.users_amount).to eq(2)
     end
   end
 end
