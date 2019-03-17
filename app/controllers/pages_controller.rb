@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   expose :users, -> { UsersQuery.new.all }
 
-  def home
+  def statistics
   end
 end

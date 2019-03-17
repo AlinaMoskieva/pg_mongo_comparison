@@ -4,14 +4,14 @@
       = title("Home")
 .row
   .columns
-  table
+  table class="statistics"
     thead
       tr
         th width="200"  User ID
         th State
     tbody
       - users.each do |user|
-        tr
+        tr class="statistic-row"
           td
             = user.state
           td
