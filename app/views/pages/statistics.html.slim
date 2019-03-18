@@ -1,0 +1,18 @@
+.row
+  .columns
+    h2
+      = title("Home")
+.row
+  .columns
+  table class="statistics"
+    thead
+      tr
+        th width="200"  User ID
+        th State
+    tbody
+      - users.each do |user|
+        tr class="statistic-row"
+          td
+            = user.state
+          td
+            = user.users_amount
