@@ -28,11 +28,13 @@ class PeopleQuery
     }
   }.freeze
 
+  COLLECTION_NAME = "mr-statistic-results".freeze
+
   def all
     Person.collection.aggregate(GROUP_BY_STATES_AND_COUNT)
   end
 
   def all_by_map_reduce
-    Person.map_reduce(MAP, REDUCE).out(merge: "mr-statistic-results")
+    Person.map_reduce(MAP, REDUCE).out(merge: COLLECTION_NAME)
   end
 end
