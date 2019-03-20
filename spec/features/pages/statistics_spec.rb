@@ -2,6 +2,7 @@ require "rails_helper"
 
 feature "Statistics page" do
   let(:statistic_rows) { all("tr.statistic-row") }
+
   let(:first_row) { statistic_rows[0] }
   let(:last_row) { statistic_rows[1] }
 
@@ -12,6 +13,16 @@ feature "Statistics page" do
 
   scenario "a user sees state statistics" do
     visit root_path
+
+    click_on "SQL"
+
+    expect(first_row).to have_content("Mokotow")
+    expect(first_row).to have_content("1")
+
+    expect(last_row).to have_content("Wilanow")
+    expect(last_row).to have_content("2")
+
+    click_on "Materialized View"
 
     expect(first_row).to have_content("Mokotow")
     expect(first_row).to have_content("1")
