@@ -3,7 +3,7 @@ class PeopleQuery
     {
       "$group" => {
         "_id" => "$state",
-        "value" => {"$sum" => 1 }
+        "value" => { "$sum" => 1 }
       }
     },
     {
@@ -16,13 +16,13 @@ class PeopleQuery
     }
   ].freeze
 
-  MAP = %Q{
+  MAP = %{
     function() {
       emit(this.state, 1);
     }
   }.freeze
 
-  REDUCE = %Q{
+  REDUCE = %{
     function(state, values) {
       return Array.sum(values);
     }
