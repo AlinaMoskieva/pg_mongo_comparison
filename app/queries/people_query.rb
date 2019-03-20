@@ -3,7 +3,7 @@ class PeopleQuery
     {
       "$group" => {
         "_id" => "$state",
-        "users_amount" => {"$sum" => 1 }
+        "value" => {"$sum" => 1 }
       }
     },
     {
@@ -11,14 +11,28 @@ class PeopleQuery
     },
     {
       "$project" => {
-        "state" => "$_id",
-        "users_amount" => 1,
-        "_id" => 0
+        "value" => 1
       }
     }
   ].freeze
 
+  MAP = %Q{
+    function() {
+      emit(this.state, 1);
+    }
+  }.freeze
+
+  REDUCE = %Q{
+    function(state, values) {
+      return Array.sum(values);
+    }
+  }.freeze
+
   def all
     Person.collection.aggregate(GROUP_BY_STATES_AND_COUNT)
+  end
+
+  def all_by_map_reduce
+    Person.map_reduce(MAP, REDUCE).out(merge: "mr-statistic-results")
   end
 end
