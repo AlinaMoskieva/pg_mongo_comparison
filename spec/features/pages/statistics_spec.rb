@@ -9,6 +9,9 @@ feature "Statistics page" do
   before do
     create_list :user, 2, state: "Wilanow"
     create :user, state: "Mokotow"
+
+    create_list :person, 2, state: "Wilanow"
+    create :person, state: "Mokotow"
   end
 
   scenario "a user sees state statistics" do
@@ -23,6 +26,22 @@ feature "Statistics page" do
     expect(last_row).to have_content("2")
 
     click_on "Materialized View"
+
+    expect(first_row).to have_content("Mokotow")
+    expect(first_row).to have_content("1")
+
+    expect(last_row).to have_content("Wilanow")
+    expect(last_row).to have_content("2")
+
+    click_on "Mongo"
+
+    expect(first_row).to have_content("Mokotow")
+    expect(first_row).to have_content("1")
+
+    expect(last_row).to have_content("Wilanow")
+    expect(last_row).to have_content("2")
+
+    click_on "Map Reduce"
 
     expect(first_row).to have_content("Mokotow")
     expect(first_row).to have_content("1")
