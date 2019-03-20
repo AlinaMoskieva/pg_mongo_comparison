@@ -11,6 +11,8 @@
         a data-tabs-target="table_panel" href="#matview_panel"  Materialized View
       li.tabs-title
         a data-tabs-target="table_panel" href="#mongo_panel"  Mongo
+      li.tabs-title
+        a data-tabs-target="table_panel" href="#mapped_mongo_panel"  Map Reduce
     .tabs-content data-tabs-content="statistics-tabs"
       #sql_panel.tabs-panel.is-active
         = render "statistics_table", users: users
@@ -18,3 +20,5 @@
         = render "statistics_table", users: users_from_matview
       #mongo_panel.tabs-panel
         = render "statistics_table_for_mongo", users: people
+      #mapped_mongo_panel.tabs-panel
+        = render "statistics_table_for_mongo", users: people_by_map_reduce

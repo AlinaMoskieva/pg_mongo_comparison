@@ -40,5 +40,13 @@ feature "Statistics page" do
 
     expect(last_row).to have_content("Wilanow")
     expect(last_row).to have_content("2")
+
+    click_on "Map Reduce"
+
+    expect(first_row).to have_content("Mokotow")
+    expect(first_row).to have_content("1")
+
+    expect(last_row).to have_content("Wilanow")
+    expect(last_row).to have_content("2")
   end
 end

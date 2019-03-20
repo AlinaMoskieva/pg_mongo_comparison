@@ -9,6 +9,6 @@
       - users.each do |user|
         tr class="statistic-row"
           td
-            = user[:state]
+            = user[:_id]
           td
-            = user[:users_amount]
+            = user[:value].to_i
